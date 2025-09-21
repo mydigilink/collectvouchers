@@ -3,7 +3,7 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - master   # or "main" if that's your branch
+      - master   # your repo default branch
 
 jobs:
   deploy:
@@ -28,10 +28,10 @@ jobs:
             git fetch origin master
             git reset --hard origin/master
 
-            # Install dependencies (include devDeps for build)
-            npm install
+            # Install dependencies
+            npm install --production
 
-            # Set environment variables dynamically
+            # Export environment variables
             export NODE_ENV=${{ secrets.NODE_ENV }}
             export PORT=${{ secrets.PORT }}
             export GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
@@ -48,5 +48,57 @@ jobs:
             # Build Next.js project
             npm run build
 
-            # Restart app via PM2
+            # Restart app with PM2
+            pm2 restart collectvouchers || pm2 start npm --name "collectvouchers" -- start -- --port 3010
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - master   # your repo default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_DEPLOY_KEY }}
+          port: 22
+          script: |
+            # Go to app directory
+            cd /home/collectvouchers/htdocs/www.collectvouchers.com
+
+            # Ensure we are on master branch
+            git fetch origin master
+            git reset --hard origin/master
+
+            # Install dependencies
+            npm install --production
+
+            # Export environment variables
+            export NODE_ENV=${{ secrets.NODE_ENV }}
+            export PORT=${{ secrets.PORT }}
+            export GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
+            export GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
+            export PROD_DB_STRING=${{ secrets.PROD_DB_STRING }}
+            export DB_NAME=${{ secrets.DB_NAME }}
+            export JWT_SECRET=${{ secrets.JWT_SECRET }}
+            export NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}
+            export NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}
+            export FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }}
+            export FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }}
+            export NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
+
+            # Build Next.js project
+            npm run build
+
+            # Restart app with PM2
             pm2 restart collectvouchers || pm2 start npm --name "collectvouchers" -- start -- --port 3010
