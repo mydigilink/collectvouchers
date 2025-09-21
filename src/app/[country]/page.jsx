@@ -65,7 +65,7 @@ export default async function CountryPage(props) {
     countryCode: country,
     activeStatus: true,
   });
-
+ 
   if (!countryDoc) {
     notFound();
   }
