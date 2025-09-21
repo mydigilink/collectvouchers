@@ -48,4 +48,4 @@ jobs:
       
 
             # Restart app via PM2
-            pm2 restart collectvouchers || pm2 start npm --name "collectvouchers" -- start -- --port 301-
+            pm2 restart collectvouchers || pm2 start npm --name "collectvouchers" -- start -- --port 3010
