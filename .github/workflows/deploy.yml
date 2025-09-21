@@ -12,15 +12,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Copy code to VPS and deploy
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
-          username: collectvouchers
+          username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_DEPLOY_KEY }}
           port: 22
           script: |
-            cd /home/collectvouchers/htdocs/www.collectvouchers.com
+            cd ${{ secrets.VPS_APP_DIR }}
             git reset --hard
             git pull origin main
             npm install
