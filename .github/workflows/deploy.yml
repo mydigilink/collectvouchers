@@ -3,18 +3,16 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - master
+      - master   # or "main" if that's your branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: SSH into VPS and deploy
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v0.1.7
         with:
@@ -25,11 +23,13 @@ jobs:
           script: |
             # Go to app directory
             cd /home/collectvouchers/htdocs/www.collectvouchers.com
-             # Ensure we are on main branch
-            git fetch origin main
+
+            # Ensure we are on master branch
+            git fetch origin master
             git reset --hard origin/master
-            
-            npm install --production
+
+            # Install dependencies (include devDeps for build)
+            npm install
 
             # Set environment variables dynamically
             export NODE_ENV=${{ secrets.NODE_ENV }}
@@ -44,8 +44,9 @@ jobs:
             export FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }}
             export FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }}
             export NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
+
+            # Build Next.js project
             npm run build
-      
 
             # Restart app via PM2
             pm2 restart collectvouchers || pm2 start npm --name "collectvouchers" -- start -- --port 3010
