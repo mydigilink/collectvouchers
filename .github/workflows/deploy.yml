@@ -3,7 +3,7 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -24,14 +24,12 @@ jobs:
           port: 22
           script: |
             # Go to app directory
-            cd ${{ secrets.VPS_APP_DIR }}
-
-            # Ensure we are on main branch
+            cd /home/collectvouchers/htdocs/www.collectvouchers.com
+             # Ensure we are on main branch
             git fetch origin main
-            git reset --hard origin/main
-
-            # Install dependencies
-            npm install
+            git reset --hard origin/master
+            
+            npm install --production
 
             # Set environment variables dynamically
             export NODE_ENV=${{ secrets.NODE_ENV }}
@@ -46,9 +44,8 @@ jobs:
             export FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }}
             export FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }}
             export NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
-
-            # Build Next.js project
             npm run build
+      
 
             # Restart app via PM2
-            pm2 restart collectvouchers || pm2 start npm --name "collectvouchers" -- start -- --port ${{ secrets.PORT }}
+            pm2 restart collectvouchers || pm2 start npm --name "collectvouchers" -- start -- --port 301-
