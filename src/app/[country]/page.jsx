@@ -72,12 +72,12 @@ export default async function CountryPage(props) {
 
   // ✅ Fetch Featured Merchants dynamically
   const res = await fetch(
-    `http://localhost:3000/api/v1/brands?field=featuredBrand&value=true`,//&limit=8`,
+    `https://www.collectvouchers.com/api/v1/brands?field=featuredBrand&value=true`,//&limit=8`,
     { cache: "no-store" } // always fresh
   );
   const featuredMerchants = await res.json();
 const countryres = await fetch(
-  `http://localhost:3000/api/v2/brands?filter={"country":"us","featuredBrand":true}&limit=40`,
+  `https://www.collectvouchers.com/api/v2/brands?filter={"country":"us","featuredBrand":true}&limit=40`,
   { cache: "no-store" }
 );
 const countryBrands = await countryres.json();
