@@ -3,7 +3,7 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -23,14 +23,13 @@ jobs:
           key: ${{ secrets.VPS_DEPLOY_KEY }}
           port: 22
           script: |
-            cd ${{ secrets.VPS_APP_DIR }}
-            
-            # Ensure we are on main_ branch
+            # Go to app directory
+            cd /home/collectvouchers/htdocs/www.collectvouchers.com
+             # Ensure we are on main branch
             git fetch origin main
-            git reset --hard origin/main
-
-            # Install dependencies
-            npm install
+            git reset --hard origin/master
+            
+            npm install --production
 
             # Set environment variables dynamically
             export NODE_ENV=${{ secrets.NODE_ENV }}
@@ -38,16 +37,15 @@ jobs:
             export GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
             export GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
             export PROD_DB_STRING=${{ secrets.PROD_DB_STRING }}
-             export DB_NAME=${{ secrets.DB_NAME }} 
-            export JWT_SECRET=${{ secrets.JWT_SECRET }} 
-            export NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }} 
-            export NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} 
-            export FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }} 
-            export FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }} 
-            export NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} 
-            
-            # Build Next.js project
+            export DB_NAME=${{ secrets.DB_NAME }}
+            export JWT_SECRET=${{ secrets.JWT_SECRET }}
+            export NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}
+            export NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}
+            export FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }}
+            export FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }}
+            export NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
             npm run build
+      
 
             # Restart app via PM2
             pm2 restart collectvouchers || pm2 start npm --name "collectvouchers" -- start -- --port 3010
