@@ -23,9 +23,10 @@ jobs:
           key: ${{ secrets.VPS_DEPLOY_KEY }}
           port: 22
           script: |
+            # Go to app directory
             cd ${{ secrets.VPS_APP_DIR }}
-            
-            # Ensure we are on main_ branch
+
+            # Ensure we are on main branch
             git fetch origin main
             git reset --hard origin/main
 
@@ -38,16 +39,16 @@ jobs:
             export GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
             export GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
             export PROD_DB_STRING=${{ secrets.PROD_DB_STRING }}
-             export DB_NAME=${{ secrets.DB_NAME }} 
-            export JWT_SECRET=${{ secrets.JWT_SECRET }} 
-            export NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }} 
-            export NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} 
-            export FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }} 
-            export FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }} 
-            export NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} 
-            
+            export DB_NAME=${{ secrets.DB_NAME }}
+            export JWT_SECRET=${{ secrets.JWT_SECRET }}
+            export NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}
+            export NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}
+            export FACEBOOK_CLIENT_ID=${{ secrets.FACEBOOK_CLIENT_ID }}
+            export FACEBOOK_CLIENT_SECRET=${{ secrets.FACEBOOK_CLIENT_SECRET }}
+            export NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
+
             # Build Next.js project
             npm run build
 
             # Restart app via PM2
-            pm2 restart collectvouchers || pm2 start npm --name "collectvouchers" -- start -- --port 3010
+            pm2 restart collectvouchers || pm2 start npm --name "collectvouchers" -- start -- --port ${{ secrets.PORT }}
