@@ -1,0 +1,22 @@
+@keyframes headerSearchAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+
+.animatedPlaceholder::placeholder {
+  animation: headerSearchAnimation 2000ms ease 0s infinite normal forwards running;
+}
