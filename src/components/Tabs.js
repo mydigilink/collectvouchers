@@ -30,7 +30,7 @@ console.log(title)
           >
             {tab.label}
           </button>
-        ))}
+        ))}   
       </div>
 
 
