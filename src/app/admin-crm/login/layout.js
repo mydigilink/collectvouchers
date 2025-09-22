@@ -44,8 +44,8 @@ export default function LoginLayout({ children }) {
   };
 
   return (
-    <div className="container vh-100 d-flex align-items-center justify-content-center bg-light">
-      <div className="card shadow-sm p-4" style={{ width: "350px" }}>
+    <div  className="container d-flex align-items-center justify-content-end mt-4">
+      <div className="  p-4" style={{ width: "350px" }}>
         <h3 className="text-center mb-4">Admin Login</h3>
         {error && <div className="alert alert-danger py-2">{error}</div>}
         <form onSubmit={handleSubmit}>

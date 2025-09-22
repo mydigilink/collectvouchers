@@ -31,16 +31,16 @@ export default function Newsletter({countryCode}) {
   };
 
   return (
-    <div className="newsletter-container  py-5 px-3 rounded-3 shadow-sm text-center">
-      <h3 className="fw-bold mb-2">📩 Get Early Access</h3>
-      <p className="text-muted mb-4">
+    <div className="newsletter-container bg-white  py-5 px-5 rounded-3 shadow-sm text-center">
+      {/* <h3 className="fw-bold mb-2 text-black">📩 Get Early Access</h3>
+      <p className="text-black mb-4">
    Your shortcut to savings starts here. Subscribe & enjoy exclusive perks.
-      </p>
+      </p> */}
 
       <form
         onSubmit={handleSubmit}
         className="d-flex flex-column flex-md-row justify-content-center gap-2"
-        style={{ maxWidth: "500px", margin: "0 auto" }}
+        style={{ maxWidth: "100%", margin: "0 auto" }}
       >
         <input
           type="email"
@@ -52,21 +52,25 @@ export default function Newsletter({countryCode}) {
         />
         <button
           type="submit"
-          className="btn btn-primary px-4 rounded-2 fw-semibold"
+          className="btn btn-primary px-0 w-50  rounded-2 fw-semibold"
         >
-          Subscribe
+          Notify Me
         </button>
       </form>
 
       {status === "success" && (
-        <p className="text-success mt-3">✅ Thanks for subscribing!</p>
+          <> <h3 className="text-success mt-3 mb-0">🎉 Thanks for subscribing!</h3>
+            <small className="text-black mt-3 mb-0">We will keep you updated.</small>
+            
+            </> 
+    
       )}
       {status === "error" && (
-        <p className="text-danger mt-3">
+        <p className="text-danger mt-3 mb-0">
           ❌ Something went wrong. Please try again.
         </p>
       )}
-      <WaitlistSection />
+      {/* <WaitlistSection /> */}
     </div>
   );
 }

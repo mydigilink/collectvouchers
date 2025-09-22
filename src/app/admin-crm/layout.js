@@ -32,7 +32,7 @@ export default function AdminLayout({ children }) {
 
   // Function to manually trigger loading
   const startLoading = () => setLoading(true);
-  const isLoginPage = pathname.includes("/admin/login");
+  const isLoginPage = pathname.includes("/admin-crm/login");
 
   return (
     <html >
@@ -54,7 +54,9 @@ export default function AdminLayout({ children }) {
               <div
                 className="p-4 flex-grow-1"
                 style={{
-                  background: "#fff",
+                  background: "url(/bg.jpg)",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
                   minHeight: "100vh",
                   overflow: "auto",
                   height: "100vh",

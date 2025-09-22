@@ -82,7 +82,7 @@ const countryres = await fetch(
 );
 const countryBrands = await countryres.json();
   return (
-    <main>test
+    <main>
       {/* {countryDoc.newsletter.headline?.trim() && (
         <NewsletterModal
           countryCode={country}

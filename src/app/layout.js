@@ -27,7 +27,7 @@ export const metadata = {
 export default async function RootLayout({ children, params }) {
   // ✅ Safe header access
   const pathname = headers().get("x-invoke-path") || "";
-  const isAdmin = pathname.includes("admin");
+  const isAdmin = pathname.includes("admin-crm");
 
   // ✅ Handle country code from params
   const lang = params?.country || "en";
