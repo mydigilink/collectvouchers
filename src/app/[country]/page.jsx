@@ -73,7 +73,7 @@ export default async function CountryPage(props) {
   // ✅ Fetch Featured Merchants dynamically
   const res = await fetch(
     `https://www.collectvouchers.com/api/v1/brands?field=featuredBrand&value=true`,//&limit=8`,
-    { cache: "no-store" } // always fresh
+    { cache: "no-store" }   // always fresh
   );
   const featuredMerchants = await res.json();
 const countryres = await fetch(
