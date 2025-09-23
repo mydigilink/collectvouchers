@@ -78,7 +78,7 @@ const handleDeploy = async () => {
       <div className="container-fluid">
         
        
-        <Link className="navbar-brand" href="/admin"> <Image
+        <Link className="navbar-brand" href="/admin-crm"> <Image
                       src="/logo.jpeg"
                       alt=" Logo"
                     width={80}

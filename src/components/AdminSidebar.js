@@ -18,7 +18,7 @@ export default function AdminSidebar() {
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
         <li className="nav-item">
-          <Link  href="/admin" className="nav-link text-white d-flex align-items-center">
+          <Link  href="/admin-crm" className="nav-link text-white d-flex align-items-center">
             <DashboardIcon className="me-2" /> Dashboard
           </Link>
         </li>
@@ -40,12 +40,12 @@ export default function AdminSidebar() {
   <div className="collapse ps-4" id="countryMenu">
     <ul className="nav flex-column">
       <li className="nav-item">
-        <Link href="/admin/countries" className="nav-link text-white">
+        <Link href="/admin-crm/countries" className="nav-link text-white">
           Country List
         </Link>
       </li>
       <li className="nav-item">
-        <Link href="/admin/country-editor" className="nav-link text-white">
+        <Link href="/admin-crm/country-editor" className="nav-link text-white">
           Add New Country
         </Link>
       </li>
@@ -69,12 +69,12 @@ export default function AdminSidebar() {
   <div className="collapse ps-4" id="brandMenu">
     <ul className="nav flex-column">
       <li className="nav-item">
-        <Link href="/admin/brands" className="nav-link text-white">
+        <Link href="/admin-crm/brands" className="nav-link text-white">
           Brand List
         </Link>
       </li>
       <li className="nav-item">
-        <Link href="/admin/brand-editor" className="nav-link text-white">
+        <Link href="/admin-crm/brand-editor" className="nav-link text-white">
           Add New Brand
         </Link>
       </li>
@@ -98,12 +98,12 @@ export default function AdminSidebar() {
   <div className="collapse ps-4" id="couponMenu">
     <ul className="nav flex-column">
       <li className="nav-item">
-        <Link href="/admin/coupon-list" className="nav-link text-white">
+        <Link href="/admin-crm/coupon-list" className="nav-link text-white">
           Coupon List
         </Link>
       </li>
       <li className="nav-item">
-        <Link href="/admin/coupons-editor" className="nav-link text-white">
+        <Link href="/admin-crm/coupons-editor" className="nav-link text-white">
           Add New Coupons
         </Link>
       </li>
@@ -130,12 +130,12 @@ export default function AdminSidebar() {
   <div className="collapse ps-4" id="categoryMenu">
     <ul className="nav flex-column">
       <li className="nav-item">
-        <Link href="/admin/categories" className="nav-link text-white">
+        <Link href="/admin-crm/categories" className="nav-link text-white">
           Category List
         </Link>
       </li>
       <li className="nav-item">
-        <Link href="/admin/category-editor" className="nav-link text-white">
+        <Link href="/admin-crm/category-editor" className="nav-link text-white">
           Add New Category
         </Link>
       </li>
@@ -160,12 +160,12 @@ export default function AdminSidebar() {
   <div className="collapse ps-4" id="blogMenu">
     <ul className="nav flex-column">
       <li className="nav-item">
-        <Link href="/admin/blog-list" className="nav-link text-white">
+        <Link href="/admin-crm/blog-list" className="nav-link text-white">
           Blog List
         </Link>
       </li>
       <li className="nav-item">
-        <Link href="/admin/blog-editor" className="nav-link text-white">
+        <Link href="/admin-crm/blog-editor" className="nav-link text-white">
           Add New Blog
         </Link>
       </li>
@@ -189,12 +189,12 @@ export default function AdminSidebar() {
   <div className="collapse ps-4" id="authorMenu">
     <ul className="nav flex-column">
       <li className="nav-item">
-        <Link href="/admin/author-list" className="nav-link text-white">
+        <Link href="/admin-crm/author-list" className="nav-link text-white">
           Author List
         </Link>
       </li>
       <li className="nav-item">
-        <Link href="/admin/author-editor" className="nav-link text-white">
+        <Link href="/admin-crm/author-editor" className="nav-link text-white">
           Add New Author
         </Link>
       </li>
@@ -203,7 +203,7 @@ export default function AdminSidebar() {
 </li>
 
         <li>
-          <Link href="/admin/settings" className="nav-link text-white d-flex align-items-center">
+          <Link href="/admin-crm/settings" className="nav-link text-white d-flex align-items-center">
             <SettingsIcon className="me-2" /> Settings
           </Link>
         </li>
