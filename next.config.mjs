@@ -14,6 +14,9 @@ const nextConfig = {
       {
         source: "/uploads/:path*",
         destination: "/api/uploads/:path*", // serve uploads via API
+      },{
+        source: "/uploads/countries/:path*",
+        destination: "/api/uploads/countries/:path*", // serve uploads via API
       }, {
         source: "/featured/:path*",
         destination: "/api/featured/:path*", // new feature route
