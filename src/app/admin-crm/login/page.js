@@ -9,7 +9,27 @@ export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+const [isAdmin, setIsAdmin] = useState(null); // null = unknown yet
+const [loading, setLoading] = useState(true);
+useEffect(() => {
+  const checkAdmin = async () => {
+    try {
+      const res = await fetch("/api/check-admin");
+      if (!res.ok) {
+        setIsAdmin(false);
+      } else {
+        const data = await res.json();
+        setIsAdmin(data.isAdmin);
+      }
+    } catch (err) {
+      setIsAdmin(false);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  checkAdmin();
+}, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
 

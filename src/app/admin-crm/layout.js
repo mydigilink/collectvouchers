@@ -11,16 +11,21 @@ import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
 import "../../styles/admin.css";
 import Loader from "../../components/Loader";
 import BootstrapClient from "../../components/BootstrapClient";
+import AdminAuthCheck from "@/components/AdminAuthCheck";
 export default function AdminLayout({ children }) {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const pathname = usePathname(); // always updated on navigation
- const [isAdmin, setIsAdmin] = useState(false);
+const [isAdmin, setIsAdmin] = useState(null); // null = unknown yet
+const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const token = Cookies.get("admin_token");
-    setIsAdmin(!!token);
-  }, []);
- 
+// useEffect(() => {
+//   fetch("/api/check-admin")
+//     .then((res) => res.json())
+//     .then((data) => setIsAdmin(data.isAdmin))
+//     .catch(() => setIsAdmin(false))
+//     .finally(() => setLoading(false));
+// }, []);
+
  
 
   // Trigger loader on route change
@@ -43,6 +48,7 @@ export default function AdminLayout({ children }) {
         />
       </head>
       <body className="admin-body">
+        <AdminAuthCheck />
         <BootstrapClient />
        
         {loading && <Loader />}
