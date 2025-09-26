@@ -1,11 +1,14 @@
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import Head from 'next/head';
 import Link from 'next/link';
 
 export default function AboutUs() {
   return (
     <>
+    <Header />
       <Head>
-        <title>About Us | NativeDiscounts</title>
+        <title>About Us | CollectVouchers</title>
         <meta name="description" content="Learn more about NativeDiscounts and our commitment to verified deals and coupons." />
         {/* Optional: Bootstrap CDN if not globally included */}
     
@@ -24,39 +27,19 @@ export default function AboutUs() {
           </ol>
         </nav>
 
-        <h1>About NativeDiscounts</h1>
+        <h1>About CollectVouchers</h1>
         <p>
-          NativeDiscounts is your one-stop destination for discovering verified deals, coupons,
-          and helpful articles so you can save big on everything from fashion and food to travel,
-          electronics, financial products, essential goods, and beyond. We’re dedicated to sharing
-          only active, working offers with our members, ensuring you always have access to reliable savings.
-        </p>
-
-        <h2>Guaranteed Valid Coupons and Deals</h2>
-        <p>
-          Our experienced team works hard to hunt down the best offers from top brands and stores.
-          Every code and deal is hand-tested by our staff before being published, so you can trust
-          that only genuine, functioning discounts make it to our platform.
-        </p>
-
-        <h2>Save on Every Purchase</h2>
-        <p>
-          From sneakers, sunglasses, and pet supplies to holiday travel, credit cards, insurance,
-          toys, beauty products, education, mobile phones, jewelry, vitamins, and more, we bring
-          you coupons that help lower the cost of whatever you shop for online.
-        </p>
-
-        <h2>How to Save with NativeDiscounts</h2>
-        <ol>
-          <li>Search your favorite product or brand on NativeDiscounts.</li>
-          <li>Click on the Coupon Code button to access your exclusive deal.</li>
-          <li>Shop on the new page and enjoy the maximum available savings.</li>
-        </ol>
-
-        <p>
-          With NativeDiscounts, saving money on your online purchases has never been easier or more reliable!
-        </p>
+         Our platform collect vouchers is pleased to introduce you with your savings journey. Due to vast globalization, online bookings and shopping have become the most preferred and convenient choices of the customers. In our opinion, shopping is the most exciting part of every person's life and getting a exclusive offer on it is truly a satisfactory thing. Whenever a customer invests their money in something and receives a coupon, voucher or cash back on that purchase, that little moment of savings brings a smile to their face, giving a sense of smart shopping.
+</p><p>
+Nothing beats the thrill of smart savings!</p><p>
+This moment you grab any coupon not just boosts your savings but add cherry on the top. We believe in one goal; to make every purchase of yours worthwhile. With exclusive coupons, we transform your purchases into savvy shopping. In certain cases, many people remain unaware about these coupons and offers, through us, you will not only discover about these discounts but also learn the strategies to invest wisely. Our platform curates the latest coupon codes and deals from the leading brands worldwide. 
+</p><p>
+Whether it's Indian fashion, global travel across countries or tech of USA, we partner with top brands and retailers across every category worldwide. We don't want you to miss any single chance to bargain on your purchase, it doesn't matter where you're shopping.
+Your trust in us will be the most crucial part of our journey which is why we ensure that every offer aligns with your needs, helping you feel confident in your choices and watch your savings grow.
+So, join hands with us and start your saving journey with trust from across the world. With our platform: https://www.collectvouchers.com your next Deal Is Just a Click Away.
+ </p>
       </main>
+      <Footer />
     </>
   );
 }

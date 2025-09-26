@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from 'next/link';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import Image from "next/image";
+import AdminUserMenu from "./AdminUserMenu";
 export default function AdminNavbar() {
    const router = useRouter();
   const timerRef = useRef(null);
@@ -85,7 +86,7 @@ const handleDeploy = async () => {
                     height={30}
                       className=""
                     /></Link>
-                 <div>
+                 <div className="d-flex align-items-center">
                     <span className="text-sm mx-2"> <button
         onClick={handleDeploy}
         disabled={loading}
@@ -99,7 +100,8 @@ const handleDeploy = async () => {
                        <span className="text-sm mx-2">
             Auto logout in: <b>{timeLeft}s</b>
           </span>
-        <Link className="btn btn-outline-dark" title='Logout' aria-label='Logout' href="/api/admin/logout"><PowerSettingsNewIcon /></Link>
+          <AdminUserMenu />
+        {/* <Link className="btn btn-outline-dark" title='Logout' aria-label='Logout' href="/api/admin/logout"><PowerSettingsNewIcon /></Link> */}
       </div></div>
     </nav>
   );

@@ -49,12 +49,14 @@ fieldset:first-child legend:first-child {
 .form-label {
     font-size: 14px;
 }
-
+.dropdown-item{font-size: 14px;}
+.dropdown-menu{border: none;box-shadow: 0 0 0 0 #000;}
 .ck.ck-editor__editable_inline {
 
     height: 300px;
 }
-
+.navbar{padding: 0 32px;min-height: 48px;}
+.profiledrop{text-align:right;position:relative;}
 legend {
     font-size: 12px;
     padding-top: 10px;

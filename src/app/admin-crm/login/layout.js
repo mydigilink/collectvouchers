@@ -34,7 +34,7 @@ export default function LoginLayout({ children }) {
         router.push("/author/dashboard");
       } 
       else if(res.ok && data.message === "Admin login successful") {
-        router.push("/admin/dashboard");
+        router.push("/admin-crm/dashboard");
       } else {
         setError(data.message || "Invalid email or password.");
       }
