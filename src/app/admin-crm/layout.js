@@ -45,7 +45,7 @@ const [loading, setLoading] = useState(true);
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
-        />
+        /> 
       </head>
       <body className="admin-body">
         <AdminAuthCheck />
